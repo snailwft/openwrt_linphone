@@ -1,0 +1,3 @@
+audiofilters/g711.lo: audiofilters/g711.c audiofilters/g711.h
+
+audiofilters/g711.h:

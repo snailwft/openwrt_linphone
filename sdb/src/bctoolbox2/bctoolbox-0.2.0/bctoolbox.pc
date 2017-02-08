@@ -1,0 +1,9 @@
+# This is a comment
+prefix=/home/openwrt/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2
+
+Name:  @PROJECT_NAME@
+Description: A common set of tools used by Belledonne Communications's softwares
+Version: 0.2.0
+Libs: -L/home/openwrt/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2/lib -lbctoolbox
+Libs.private: @LIBS_PRIVATE@
+Cflags: -I/home/openwrt/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2/include

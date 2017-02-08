@@ -1,0 +1,209 @@
+--------------------
+./configure --prefix=/home/openwrt/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2
+Wed Jan 18 17:17:25 PST 2017
+=== ztest15805.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+mipsel-openwrt-linux-uclibc -c ztest15805.c
+... using mipsel-openwrt-linux-uclibc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest15805.c ===
+int foo() { return 0; }
+===
+mipsel-openwrt-linux-uclibc -c -O ztest15805.c
+./configure: 400: mipsel-openwrt-linux-uclibc: not found
+(exit code 127)
+Compiler error reporting is too harsh for ./configure (perhaps remove -Werror).
+** ./configure aborting.
+--------------------
+
+
+--------------------
+./configure --prefix=/home/openwrt/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2
+Wed Jan 18 17:17:39 PST 2017
+=== ztest15834.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+mipsel-openwrt-linux-uclibc-gcc -c ztest15834.c
+mipsel-openwrt-linux-uclibc-gcc: warning: environment variable 'STAGING_DIR' not defined
+... using gcc
+
+Checking for obsessive-compulsive compiler options...
+=== ztest15834.c ===
+int foo() { return 0; }
+===
+mipsel-openwrt-linux-uclibc-gcc -c -O3 ztest15834.c
+mipsel-openwrt-linux-uclibc-gcc: warning: environment variable 'STAGING_DIR' not defined
+
+Checking for shared library support...
+=== ztest15834.c ===
+extern int getchar();
+int hello() {return getchar();}
+===
+mipsel-openwrt-linux-uclibc-gcc -w -c -O3 -fPIC ztest15834.c
+mipsel-openwrt-linux-uclibc-gcc: warning: environment variable 'STAGING_DIR' not defined
+mipsel-openwrt-linux-uclibc-gcc -shared -Wl,-soname,libz.so.1,--version-script,zlib.map -O3 -fPIC -o ztest15834.so ztest15834.o
+mipsel-openwrt-linux-uclibc-gcc: warning: environment variable 'STAGING_DIR' not defined
+mipsel-openwrt-linux-uclibc-gcc: warning: environment variable 'STAGING_DIR' not defined
+/home/openwrt/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.8.3/../../../../mipsel-openwrt-linux-uclibc/bin/ld: skipping incompatible /usr/lib/libc.so when searching for -lc
+/home/openwrt/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.8.3/../../../../mipsel-openwrt-linux-uclibc/bin/ld: skipping incompatible /usr/lib/libc.a when searching for -lc
+Building shared library libz.so.1.2.11 with mipsel-openwrt-linux-uclibc-gcc.
+
+=== ztest15834.c ===
+#include <stdio.h>
+#include <stdlib.h>
+size_t dummy = 0;
+===
+mipsel-openwrt-linux-uclibc-gcc -c -O3 ztest15834.c
+mipsel-openwrt-linux-uclibc-gcc: warning: environment variable 'STAGING_DIR' not defined
+Checking for size_t... Yes.
+
+
+=== ztest15834.c ===
+#include <sys/types.h>
+off64_t dummy = 0;
+===
+mipsel-openwrt-linux-uclibc-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest15834.c
+mipsel-openwrt-linux-uclibc-gcc: warning: environment variable 'STAGING_DIR' not defined
+Checking for off64_t... Yes.
+Checking for fseeko... Yes.
+
+=== ztest15834.c ===
+#include <string.h>
+#include <errno.h>
+int main() { return strlen(strerror(errno)); }
+===
+mipsel-openwrt-linux-uclibc-gcc -O3 -D_LARGEFILE64_SOURCE=1 -o ztest15834 ztest15834.c
+mipsel-openwrt-linux-uclibc-gcc: warning: environment variable 'STAGING_DIR' not defined
+mipsel-openwrt-linux-uclibc-gcc: warning: environment variable 'STAGING_DIR' not defined
+mipsel-openwrt-linux-uclibc-gcc: warning: environment variable 'STAGING_DIR' not defined
+/home/openwrt/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.8.3/../../../../mipsel-openwrt-linux-uclibc/bin/ld: skipping incompatible /usr/lib/libc.so when searching for -lc
+/home/openwrt/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.8.3/../../../../mipsel-openwrt-linux-uclibc/bin/ld: skipping incompatible /usr/lib/libc.a when searching for -lc
+Checking for strerror... Yes.
+
+=== ztest15834.c ===
+#include <unistd.h>
+int main() { return 0; }
+===
+mipsel-openwrt-linux-uclibc-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest15834.c
+mipsel-openwrt-linux-uclibc-gcc: warning: environment variable 'STAGING_DIR' not defined
+Checking for unistd.h... Yes.
+
+=== ztest15834.c ===
+#include <stdarg.h>
+int main() { return 0; }
+===
+mipsel-openwrt-linux-uclibc-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest15834.c
+mipsel-openwrt-linux-uclibc-gcc: warning: environment variable 'STAGING_DIR' not defined
+Checking for stdarg.h... Yes.
+
+=== ztest15834.c ===
+#include <stdio.h>
+#include <stdarg.h>
+#include "zconf.h"
+int main()
+{
+#ifndef STDC
+  choke me
+#endif
+  return 0;
+}
+===
+mipsel-openwrt-linux-uclibc-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest15834.c
+mipsel-openwrt-linux-uclibc-gcc: warning: environment variable 'STAGING_DIR' not defined
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+
+=== ztest15834.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return 0;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+mipsel-openwrt-linux-uclibc-gcc -O3 -D_LARGEFILE64_SOURCE=1 -o ztest15834 ztest15834.c
+mipsel-openwrt-linux-uclibc-gcc: warning: environment variable 'STAGING_DIR' not defined
+mipsel-openwrt-linux-uclibc-gcc: warning: environment variable 'STAGING_DIR' not defined
+mipsel-openwrt-linux-uclibc-gcc: warning: environment variable 'STAGING_DIR' not defined
+/home/openwrt/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.8.3/../../../../mipsel-openwrt-linux-uclibc/bin/ld: skipping incompatible /usr/lib/libc.so when searching for -lc
+/home/openwrt/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2/lib/gcc/mipsel-openwrt-linux-uclibc/4.8.3/../../../../mipsel-openwrt-linux-uclibc/bin/ld: skipping incompatible /usr/lib/libc.a when searching for -lc
+Checking for vsnprintf() in stdio.h... Yes.
+
+=== ztest15834.c ===
+#include <stdio.h>
+#include <stdarg.h>
+int mytest(const char *fmt, ...)
+{
+  int n;
+  char buf[20];
+  va_list ap;
+  va_start(ap, fmt);
+  n = vsnprintf(buf, sizeof(buf), fmt, ap);
+  va_end(ap);
+  return n;
+}
+int main()
+{
+  return (mytest("Hello%d\n", 1));
+}
+===
+mipsel-openwrt-linux-uclibc-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest15834.c
+mipsel-openwrt-linux-uclibc-gcc: warning: environment variable 'STAGING_DIR' not defined
+Checking for return value of vsnprintf()... Yes.
+
+=== ztest15834.c ===
+#define ZLIB_INTERNAL __attribute__((visibility ("hidden")))
+int ZLIB_INTERNAL foo;
+int main()
+{
+  return 0;
+}
+===
+mipsel-openwrt-linux-uclibc-gcc -c -O3 -D_LARGEFILE64_SOURCE=1 ztest15834.c
+mipsel-openwrt-linux-uclibc-gcc: warning: environment variable 'STAGING_DIR' not definedChecking for attribute(visibility) support... No.
+
+ALL = static shared all64
+AR = ar
+ARFLAGS = rc
+CC = mipsel-openwrt-linux-uclibc-gcc
+CFLAGS = -O3 -D_LARGEFILE64_SOURCE=1
+CPP = mipsel-openwrt-linux-uclibc-gcc -E
+EXE =
+LDCONFIG = ldconfig
+LDFLAGS =
+LDSHARED = mipsel-openwrt-linux-uclibc-gcc -shared -Wl,-soname,libz.so.1,--version-script,zlib.map
+LDSHAREDLIBC = -lc
+OBJC = $(OBJZ) $(OBJG)
+PIC_OBJC = $(PIC_OBJZ) $(PIC_OBJG)
+RANLIB = ranlib
+SFLAGS = -O3 -fPIC -D_LARGEFILE64_SOURCE=1
+SHAREDLIB = libz.so
+SHAREDLIBM = libz.so.1
+SHAREDLIBV = libz.so.1.2.11
+STATICLIB = libz.a
+TEST = all teststatic testshared test64
+VER = 1.2.11
+Z_U4 =
+SRCDIR =
+exec_prefix = ${prefix}
+includedir = ${prefix}/include
+libdir = ${exec_prefix}/lib
+mandir = ${prefix}/share/man
+prefix = /home/openwrt/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2
+sharedlibdir = ${libdir}
+uname = Linux
+--------------------
+
+

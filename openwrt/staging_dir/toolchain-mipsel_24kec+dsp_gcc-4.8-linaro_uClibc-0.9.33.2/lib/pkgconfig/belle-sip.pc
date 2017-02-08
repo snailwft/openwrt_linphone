@@ -1,0 +1,12 @@
+# This is a comment
+prefix=/home/openwrt/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2
+exec_prefix=${prefix}
+includedir=${prefix}/include
+
+Name: belle-sip 
+Description: A c based implementation of the SIP (RFC 3261)  telephony protocol 
+Requires.private:  
+Version: 1.4.2
+Libs: -L${exec_prefix}/lib -lbellesip
+Libs.private:   -lcunit -L/home/openwrt/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2/lib -lantlr3c -L/home/openwrt/staging_dir/toolchain-mipsel_24kec+dsp_gcc-4.8-linaro_uClibc-0.9.33.2/lib -lpolarssl
+Cflags: -I${prefix}/include 
